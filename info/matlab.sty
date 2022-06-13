@@ -1,0 +1,119 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{matlab}
+
+\RequirePackage{listings}
+\RequirePackage{hyperref}
+\RequirePackage{color}
+
+
+\newcommand{\maxwidth}[1]{\ifdim\linewidth>#1 #1\else\linewidth\fi}
+\newcommand{\mlcell}[1]{\lstinline[style=matlaboutputstyle]$#1$}
+
+\definecolor{output}{gray}{0.5}
+
+
+% Unicode character conversions
+\DeclareUnicodeCharacter{B0}{\ensuremath{^\circ}}
+\DeclareUnicodeCharacter{21B5}{\ensuremath{\hookleftarrow}}
+
+
+% Paragraph indentation
+\setlength{\parindent}{0pt}
+
+
+% Hyperlink style
+\hypersetup{
+colorlinks=true,
+linkcolor=blue,
+urlcolor=blue
+}
+
+
+% Listings environment styles for MATLAB code and output
+\lstset{
+extendedchars=\true,
+inputencoding=utf8
+}
+
+\lstnewenvironment{matlabcode}{
+\lstset{
+frame=single,
+framesep=0.75em,
+xleftmargin=1em,
+breaklines=true,
+prebreak=\ldots,
+breakatwhitespace=true,
+literate={-}{-}1 {+}{+}2 {\_}{\_}2 {\#}{\#}2 {\%}{\%}2 {\&}{\&}2 {<}{<}2 {=}{=}2 {>}{>}2 {\^}{\textasciicircum{}}2
+}
+}{}
+
+\lstnewenvironment{matlaboutput}{
+\lstset{
+style=matlaboutputstyle
+}
+}{}
+
+\lstnewenvironment{matlabsymbolicoutput}{
+\lstset{
+style=matlaboutputstyle,
+mathescape=true
+}
+}{}
+
+\lstdefinestyle{matlaboutputstyle}{
+basicstyle=\color{output},
+belowskip=0pt,
+aboveskip=0pt,
+xleftmargin=1.25em,
+literate={-}{-}1 {+}{+}2 {\_}{\_}2 {\#}{\#}2 {\%}{\%}2 {\&}{\&}2 {<}{<}2 {=}{=}2 {>}{>}2 {\^}{\textasciicircum{}}2
+}
+
+\newenvironment{matlabtableoutput}[1]{
+{\color{output}
+\hspace*{1.25em}#1
+}
+}{}
+
+
+% Table of Contents style
+\newcounter{multititle}
+\newcommand{\matlabmultipletitles}{\setcounter{multititle}{1}}
+
+\newcounter{hastoc}
+\newcommand{\matlabhastoc}{\setcounter{hastoc}{1}}
+
+\newcommand{\matlabtitle}[1]{
+\ifnum\value{multititle}>0
+  \ifnum\value{hastoc}>0
+    \addcontentsline{toc}{section}{#1}
+  \fi
+\fi
+\section*{#1}
+}
+
+\newcommand{\matlabheading}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{subsection}{#1}
+\fi
+\subsection*{#1}
+}
+
+\newcommand{\matlabheadingtwo}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{subsubsection}{#1}
+\fi
+\subsubsection*{#1}
+}
+
+\newcommand{\matlabheadingthree}[1]{
+\ifnum\value{hastoc}>0
+  \addcontentsline{toc}{paragraph}{#1}
+\fi
+\paragraph*{#1}
+}
+
+\newcommand{\matlabtableofcontents}[1]{
+\renewcommand{\contentsname}{#1}
+\tableofcontents
+}
+ 
