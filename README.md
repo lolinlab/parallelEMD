@@ -1,4 +1,4 @@
-# gpuEMD
+# Parallel EMD
 
 This program performs parallele 1-D EMD (empirical model decomposition) on GPU, and returns the IMFs of each input, then, for each of the IMFs, the program also finds the upper evenlop, lower envelop, critical points (local maxima and local minina).
 
