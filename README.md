@@ -8,9 +8,7 @@ The 1-D signals with the same length (such as EEG signal for each sleep epoch) c
 
 ## Getting started :
 
-   -  Clone this repository using the following git command : 
-   -  
-
+   -  Clone this repository using the following git command 
    -  In Matlab, compile the code with the following command 
 
 ```matlab:Code
