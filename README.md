@@ -21,10 +21,13 @@ mexcuda mex_gpuEMD_env.cu
 
 
 ## Requirements
- - NVIDIA
- - GXM
- - Matlab "parallel computing package" and XXX is required. For more information about mexcuda, please see [https://www.mathworks.com/help/parallel-computing/mexcuda.html](https://www.mathworks.com/help/parallel-computing/mexcuda.html)
+ - GPU
+ - Nvidia toolkit compatible with you Matlab version
+To understand compatible cuda toolkit, see:
+https://www.mathworks.com/help/parallel-computing/run-cuda-or-ptx-code-on-gpu.html;jsessionid=ea26398a329d470bdd8453517acb
 
+ - Matlab "parallel computing package" is required. 
+For more information about mexcuda, please see [https://www.mathworks.com/help/parallel-computing/mexcuda.html](https://www.mathworks.com/help/parallel-computing/mexcuda.html)
 ## Using gpuEMD:
 
 ```matlab:Code
