@@ -1,8 +1,8 @@
 # Parallel EMD
 
-This program performs parallel 1-D EMD (empirical model decomposition) on GPU, and returns the IMFs of each input, then, for each of the IMFs, the program also finds the upper evenlop, lower envelop, critical points (local maxima and local minina).
+This program performs parallel 1-D EMD (empirical model decomposition) on GPU and returns the IMFs of each input; then, for each of the IMFs, the program also finds the upper envelop, lower envelop, critical points (local maxima and local minima).
 
-The 1-D signals with the same length (such as EEG signal for each sleep epoch) can be decomposed simultaneously, with each signal processed by each of the GPU kernal.
+The 1-D signals with the same length (such as EEG signal for each sleep epoch) can be decomposed simultaneously, with each signal processed by each GPU kernel.
 
 
 
@@ -20,8 +20,8 @@ mexcuda mex_gpuEMD_env.cu
 
 ## Requirements
  - GPU
- - Nvidia toolkit compatible with you Matlab version
-To understand compatible cuda toolkit, see:
+ - Nvidia toolkit compatible with your Matlab version
+To understand the compatible Cuda toolkit, see:
 https://www.mathworks.com/help/parallel-computing/run-cuda-or-ptx-code-on-gpu.html;jsessionid=ea26398a329d470bdd8453517acb
 
  - Matlab "parallel computing package" is required. 
@@ -39,9 +39,9 @@ For more information about mexcuda, please see [https://www.mathworks.com/help/p
 
 (2) nm: number of modes desired
 
-(3) nsift: number of sifting, please use 10. (will set as default in
+(3) nsift: number of sifting, please use 10. (will be set as default in
 
-futer version)
+future version)
 
   
 ### output: 
@@ -54,7 +54,7 @@ futer version)
 
 (4) len0 (y_len by nm ): number of critical points of the IMFs
 
-(5) up0 (x_len*y_len*nm by 1): Upper envelop of all the IMFs, need to reshape
+(5) up0 (x_len*y_len*nm by 1): Upper envelope of all the IMFs, need to reshape
 
 (6) low0 (x_len*y_len*nm by 1): Lower envelop of all the IMFs, need to reshape
 
@@ -66,7 +66,7 @@ Two scripts are provided as examples for running gpuEMD.
 
 ### Example 1: decompose summation of 3 sinusoids with different frequencies (example1_gpuEMD_sinusoid.m)
 
-In this example, the input is a summation of 3 sinusoids with different frequencies. We expect EMD to decompose the summation into single-tone sinusoids.  Note that this simple example is to validate the accuracy of parrallel EMD, not the efficiency. The signal is replicated for parrallel computing.
+In this example, the input is a summation of 3 sinusoids with different frequencies. We expect EMD to decompose the summation into single-tone sinusoids.  Note that this simple example is to validate the accuracy of parrallel EMD, not the efficiency. The signal is replicated for parallel computing.
 
 ```matlab:Code
 %% Generate signal
@@ -140,9 +140,9 @@ end
 ![Decomposing 3 sinusoids](./images/figure_1.png "Decomposing 3 sinusoids")
 
   
-# Example 2: decompose sleep epochs and calcualte time-frequency spectrogram
+# Example 2: decompose sleep epochs and calculate time-frequency spectrogram
 
-In this example, we cut the whole-night EEG into segments by epoch, decompose all of the epochs at once, and use the output to calcualte  "EMD" styled powerspectrum for each epoch. Then, combining all epochs, we derived the time-frequency representation of EEG by the "EMD" way.
+In this example, we cut the whole-night EEG into segments by epoch, decompose all of the epochs at once, and use the output to calculate the "EMD" styled power spectrum for each epoch. Then, combining all epochs, we derived the time-frequency representation of EEG by the "EMD" way.
 
 ### Reshape the whole night EEG
 
@@ -169,9 +169,9 @@ low = reshape(low0, x_len, y_len, nm);
 ```
 
 ```matlab:Code
-% Note that the second dimention (y_len) represents the epochs
-% Then,with these criticle points and upper envelop, we can define
-% power-spectrum the in EMD way
+% Note that the second dimension (y_len) represents the epochs
+% Then, with these critical points and upper envelope, we can define
+% power-spectrum in the EMD way
     % calculate insFreq
     InsFreq1 = instFreq3(criticalPoints, epochL, fs, len(iwin,:));
     [fscale,sPowerPlot,~] = freqPowerPlot3(InsFreq1, upperEnv);
@@ -209,13 +209,13 @@ Testing environment:
 
 (1) In GPU EMD, the sifting time is almost the same for different number of signals, this is true as they performs parrallely on all kernels.
 
-(2) In GPU EMD, the most time-comsuming part (when the number of signals increases) is memory copy from GPU back to CPU, and this linearly increases with the number of signals.
+(2) In GPU EMD, the most time-consuming part (when the number of signals increases) is memory copy from GPU back to CPU, and this linearly increases with the number of signals.
 
-(3) When performing only fast EMD without furhter calculating the envelop of the final IMF, the time spent is less than gpuEMD. However, this is due to the fact that gpuEMD spent too much time on copying the memory for critical points and envelopes back to CPU.
+(3) When performing only fast EMD without further calculating the envelope of the final IMF, the time spent is less than gpuEMD. However, this is because gpuEMD spent too much time copying the memory for critical points and envelopes back to the CPU.
 
-(4) When the time for calculating envelop is also considered, gpuEMD out-performs the fast EMD.
+(4) When the time for calculating envelop is also considered, gpuEMD outperforms the fast EMD.
 
-## Copy right (C):
+## Copyright (C):
 
 (1) Lab of Integrated Biosignal Advances, National Central University; 2022
 
