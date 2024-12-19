@@ -87,7 +87,7 @@ fig1 = figure();
 plot(t,A(:,1))
 ```
 
-![./read_me_images/figure_0.png
+![fig0](./images/figure_0.png "fig0")
 )
 
 ```matlab:Code
