@@ -1,8 +1,8 @@
 # Parallel EMD
 
-This program performs parallel 1-D EMD (empirical model decomposition) on GPU and returns the IMFs of each input; then, for each of the IMFs, the program also finds the upper envelop, lower envelop, critical points (local maxima and local minima).
+This program performs parallel 1-D EMD (empirical mode decomposition) on GPU and returns the IMFs of each input; then, for each of the IMFs, the program also finds the upper envelop, lower envelop, and critical points (local maxima and local minima).
 
-The 1-D signals with the same length (such as EEG signal for each sleep epoch) can be decomposed simultaneously, with each signal processed by each GPU kernel.
+The 1-D signals with the same length (such as the EEG signal for each sleep epoch) can be decomposed simultaneously, with each signal processed by each GPU kernel.
 
 
 
@@ -54,9 +54,9 @@ future version)
 
 (4) len0 (y_len by nm ): number of critical points of the IMFs
 
-(5) up0 (x_len*y_len*nm by 1): Upper envelope of all the IMFs, need to reshape
+(5) up0 (x_len*y_len*nm by 1): Upper envelope of all the IMFs, needs to reshape
 
-(6) low0 (x_len*y_len*nm by 1): Lower envelop of all the IMFs, need to reshape
+(6) low0 (x_len*y_len*nm by 1): Lower envelop of all the IMFs, needs to reshape
 
   
 # Examples
