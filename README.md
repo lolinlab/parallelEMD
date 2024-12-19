@@ -88,7 +88,6 @@ plot(t,A(:,1))
 ```
 
 ![fig0](./images/figure_0.png "fig0")
-)
 
 ```matlab:Code
 %% Decompose by gpuEMD
