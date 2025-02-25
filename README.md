@@ -216,15 +216,15 @@ Testing environment:
 
 ## Copyright (C):
 
-(1) Lab of Integrated Biosignal Advances, National Central University; 2022
+(1) Laboratory of Integrated Biomedical Signal Applications, National Central University 2022
 
-(2) Medical Biodynamics Program, Brigham and Women's Hospital, 
+(2) Medical Biodynamics Program, Brigham and Women's Hospital
 
 
 ## Author
 Orignal Authors: Li-Wen Chang, Men-Tzung Lo, Nasser Anssari, Ke-Hsin Hsu, Norden E. Huang, Wen-mei W. Hwu
 
-Modifying Authors: Yu-Qi Peng, Hui-Wen Yang, Daniel Abadjiev, Jin-En Hsu, Yi-Je Lin, Kun Hu, Men-Tzung Lo
+Modifying Authors: Yu-Qi Peng, Hui-Wen Yang, Daniel Abadjiev, Ching-En Hsu, Yi-Je Lin, Kun Hu, Men-Tzung Lo
 
 Please Cite: 
 
